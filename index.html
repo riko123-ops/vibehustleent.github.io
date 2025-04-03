@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entertainment & Culture Hub</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            width: 90%; /* Responsive width */
+            max-width: 1200px; /* Maximum width on larger screens */
+            margin: auto;
+            overflow: hidden;
+        }
+
+        header {
+            background: #f4f4f4;
+            padding: 10px 0; /* Reduced padding for smaller screens */
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo h1 {
+            margin: 0;
+            color: #e8491d;
+            font-size: 1.5em; /* Responsive font size */
+        }
+
+        header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap; /* Allows navigation to wrap on smaller screens */
+            justify-content: center; /* Center navigation on smaller screens */
+        }
+
+        header nav li {
+            margin: 5px 10px; /* Reduced margins for smaller screens */
+        }
+
+        header nav a {
+            color: #333;
+            text-decoration: none;
+            padding: 8px 12px; /* Add padding for touch targets */
+        }
+
+        header nav a:hover {
+            color: #e8491d;
+        }
+
+        .login-container {
+            margin-bottom: 10px; /* Reduced margin for smaller screens */
+            text-align: right;
+        }
+
+        .login-button {
+            background-color: #e8491d;
+            color: white;
+            padding: 8px 15px; /* Reduced padding for smaller screens */
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .login-button:hover {
+            background-color: #d13d18;
+        }
+
+        .content-section {
+            padding: 30px 0; /* Reduced padding for smaller screens */
+            text-align: center;
+            display: none;
+        }
+
+        .media-container {
+            display: flex;
+            justify-content: center; /* Center media items */
+            flex-wrap: wrap;
+        }
+
+        .media-item {
+            margin: 10px; /* Reduced margin for smaller screens */
+            max-width: 90%; /* Responsive max width */
+        }
+
+        .media-item img, .media-item video, .media-item iframe {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .login-form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 90%; /* Responsive width */
+            max-width: 300px; /* Maximum width */
+        }
+
+        .login-form input, .login-form button {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        .login-form button {
+            background-color: #e8491d;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .signup-link, .forgot-password-link {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('placeholder-image.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 50px 0; /* Reduced padding for smaller screens */
+        }
+
+        .hero h1 {
+            font-size: 2em; /* Responsive font size */
+            margin-bottom: 10px; /* Reduced margin for smaller screens */
+        }
+
+        .hero p {
+            font-size: 1em; /* Responsive font size */
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0; /* Reduced padding for smaller screens */
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: #333;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        #home {
+            display: block;
+        }
+
+        /* Media Queries for Responsive Design */
+        @media (max-width: 768px) {
+            header .logo h1 {
+                font-size: 1.2em;
+            }
+
+            header nav ul {
+                flex-direction: column; /* Stack navigation items vertically */
+                align-items: center;
+            }
+
+            header nav li {
+                margin: 5px 0;
+            }
+
+            .hero h1 {
+                font-size: 1.8em;
+            }
+
+            .hero p {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <body>
+        <header>
+            <div class="container">
+                <div class="login-container">
+                    <button class="login-button" onclick="openLogin()">Login</button>
+                </div>
+                <div class="logo">
+                    <h1>Entertainment & Culture</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#" onclick="showSection('home')">Home</a></li>
+                        <li><a href="#" onclick="showSection('music')">Music</a></li>
+                        <li><a href="#" onclick="showSection('art')">Art & Design</a></li>
+                        <li><a href="#" onclick="showSection('lifestyle')">Lifestyle</a></li>
+                        <li><a href="#" onclick="showSection('events')">Events</a></li>
+                        <li><a href="#" onclick="showSection('about')">About Us</a></li>
+                        <li><a href="#" onclick="showSection('contact')">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    
+        <main>
+            <section class="hero">
+                <div class="container">
+                    <h1>Welcome to Hustle $ Vibe</h1>
+                    <p>Explore the vibrant world of entertainment and culture.</p>
+                </div>
+            </section>
+    
+            <section class="content-section" id="home">
+                <h2>Home Content</h2>
+                <div class="media-container">
+                    <div class="media-item">
+                        <img src="C:\Users\Stam254\Desktop\veloride\insta-save.net_InstagramPost_officialkenyaairways_3594698635468898249.webp" alt="Featured Image">
+                    </div>
+                    <div class="media-item">
+                        <video src="placeholder-video.mp4" controls></video>
+                        <p>Latest Music Video</p>
+                    </div>
+                </div>
+                <p>More home page content goes here...</p>
+            </section>
+    
+            <section class="content-section" id="music">
+                <h2>Music</h2>
+                <div class="media-container">
+                    <div class="media-item">
+                        <iframe width="560" height="315" src="c:\Users\Stam254\Downloads\Bien & Marioo -  Nairobi  _  Extra Pressure  _ TRACE AWARDS 2025.mp4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <p>Content related to music will be displayed here...</p>
+            </section>
+    
+            <section class="content-section" id="art">
+                <h2>Art & Design</h2>
+                <div class="media-container">
+                    <div class="media-item">
+                        <img src="placeholder-image.jpg" alt="Art Gallery">
+                        <p>Art Gallery Image Placeholder</p>
+                    </div>
+                </div>
+                <p>Explore the world of art and design...</p>
+            </section>
+    
+            <section class="content-section" id="lifestyle">
+                <h2>Lifestyle</h2>
+                <div class="media-container">
+                    <div class="media-item">
+                        <img src="placeholder-image.jpg" alt="Lifestyle Content">
+                        <p>Lifestyle Content Placeholder</p>
+                    </div>
+                </div>
+                <p>Discover lifestyle tips and trends...</p>
+            </section>
+    
+            <section class="content-section" id="events">
+                <h2>Events</h2>
+                <div class="media-container">
+                    <div class="media-item">
+                        <img src="placeholder-image.jpg" alt="Event Poster">
+                    </div>
+                </div>
+                <p>Check out upcoming events...</p>
+            </section>
+    
+            <section class="content-section" id="about">
+                <h2>About Us</h2>
+                <h2>About Hustle $ Vibe</h2>
+                <p>Hustle $ Vibe is more than just a website; it's a community built on a shared passion for entertainment and culture. We believe in celebrating the artists, the creators, and the innovators who shape our world.</p>
+                <p>We're here to provide a space where you can discover the latest in music, art, lifestyle, and events, while connecting with like-minded individuals. Our goal is to foster a vibrant community where creativity is valued, and where everyone feels inspired to express themselves.</p>
+                <p>Join us on this exciting journey as we explore the dynamic world of entertainment and culture together. Let's connect, collaborate, and vibe!</p>
+            </section>
+    
+            <section class="content-section" id="contact">
+                <h2>Contact Us</h2>
+                    <h2>Get in Touch with Hustle $ Vibe</h2>
+                    <p>We're here to connect with our community! If you have any inquiries, feedback, or collaboration proposals, please don't hesitate to contact us.</p>
+                
+                    <div style="text-align: left; max-width: 600px; margin: 20px auto;">
+                        <p><strong>General Inquiries:</strong> <a href="mailto:info@hustlevibe.com">info@hustlevibe.com</a></p>
+                        <p><strong>Partnerships:</strong> <a href="mailto:partnerships@hustlevibe.com">partnerships@hustlevibe.com</a></p>
+                        <p><strong>Media Inquiries:</strong> <a href="mailto:media@hustlevibe.com">media@hustlevibe.com</a></p>
+                        <p><strong>Phone:</strong> +254 797 710-809 (Monday - Friday, 9 AM - 5 PM)</p>
+                        <p><strong>Address:</strong> 157 Nairobi, Moiavenue, ruai, 00300</p>
+                    </div>
+                    <p><strong>Connect with us on social media:</strong></p>
+                    <div style="display: flex; justify-content: left; align-items: center; margin-top: 10px;">
+                        <a href="https://wa.me/ +254-797 701 089" target="_blank" style="margin-right: 10px;">
+                            <img src="C:\Users\Stam254\Desktop\veloride\wap.jpg" alt="WhatsApp" style="width: 30px; height: 30px;">
+                        </a>
+                        <a href="https://www.instagram.com/@hustle_vibe.com" target="_blank" style="margin-right: 10px;">
+                            <img src="C:\Users\Stam254\Desktop\veloride\insta.jpg" alt="Instagram" style="width: 30px; height: 30px;">
+                        </a>
+                        <a href="https://www.facebook.com/@vibehustleops" target="_blank" style="margin-right: 10px;">
+                            <img src="C:\Users\Stam254\Desktop\veloride\fb.png" alt="Facebook" style="width: 30px; height: 30px;">
+                        </a>
+                        <a href="https://www.linkedin.com/in/vibe Hustle" target="_blank">
+                            <img src="C:\Users\Stam254\Desktop\veloride\lkn.png" alt="LinkedIn" style="width: 30px; height: 30px;">
+                        </a>
+                    </div>
+                </div>
+            
+                
+                    <p>Or, fill out the form below, and we'll get back to you as soon as possible:</p>
+                
+                    <form style="max-width: 600px; margin: 20px auto; text-align: left;">
+                        <label for="name">Your Name:</label><br>
+                        <input type="text" id="name" name="name" required style="width: 100%; padding: 10px; margin-bottom: 10px;"><br>
+                
+                        <label for="email">Your Email:</label><br>
+                        <input type="email" id="email" name="email" required style="width: 100%; padding: 10px; margin-bottom: 10px;"><br>
+                
+                        <label for="subject">Subject:</label><br>
+                        <input type="text" id="subject" name="subject" required style="width: 100%; padding: 10px; margin-bottom: 10px;"><br>
+                
+                        <label for="message">Your Message:</label><br>
+                        <textarea id="message" name="message" rows="6" required style="width: 100%; padding: 10px; margin-bottom: 10px;"></textarea><br>
+                
+                        <button type="submit" style="background-color: #e8491d; color: white; padding: 10px 20px; border: none; cursor: pointer;">Send Message</button>
+                    </form>
+            </section>
+        </main>
+    
+        <footer>
+            <div class="container">
+                <p>© 2025 Hustle $ Vibe. All rights reserved.</p>
+            </div>
+        </footer>
+    
+        <div class="overlay" id="loginOverlay">
+            <div class="login-form">
+                <button class="close-button" onclick="closeOverlay('loginOverlay')">&times;</button>
+                <h2>Login</h2>
+                <input type="text" placeholder="Email">
+                <input type="password" placeholder="Password">
+                <button onclick="login()">Login</button>
+                <p class="forgot-password-link"><a href="#" onclick="forgotPassword()">Forgot Password?</a></p>
+                <p class="signup-link">New user? <a href="#" onclick="showSignup()">Sign up</a></p>
+            </div>
+        </div>
+    
+        <div class="overlay" id="signupOverlay">
+            <div class="login-form">
+                <button class="close-button" onclick="closeOverlay('signupOverlay')">&times;</button>
+                <h2>Sign up</h2>
+                <input type="text" placeholder="Email">
+                <input type="password" placeholder="Password">
+                <button onclick="signUpSubmit()">Sign up</button>
+            </div>
+        </div>
+    
+        <script>
+            function openLogin() {
+                document.getElementById('loginOverlay').style.display = 'flex';
+            }
+    
+            function closeOverlay(overlayId) {
+                document.getElementById(overlayId).style.display = 'none';
+            }
+    
+            function login() {
+                alert('Login functionality will be added here.');
+                closeOverlay('loginOverlay');
+            }
+    
+            function showSignup() {
+                document.getElementById('loginOverlay').style.display = 'none';
+                document.getElementById('signupOverlay').style.display = 'flex';
+            }
+    
+            function signUpSubmit() {
+                alert('Signup functionality will be added here');
+                closeOverlay('signupOverlay');
+            }
+    
+            function showSection(sectionId) {
+                const sections = document.querySelectorAll('.content-section');
+                sections.forEach(section => section.style.display = 'none');
+    
+                const targetSection = document.getElementById(sectionId);
+                if (targetSection) {
+                    targetSection.style.display = 'block';
+                }
+            }
+            function forgotPassword() {
+                alert('Forgot Password functionality will be added here.');
+            }
+        </script>
+    </body>
+    
+</body>
+</html>
