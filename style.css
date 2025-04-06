@@ -1,200 +1,502 @@
-<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
-    padding: 0;
     background-color: #f4f4f4;
     color: #333;
+    padding-top: 1px;
 }
 
 .container {
-    width: 90%; /* Responsive width */
-    max-width: 1200px; /* Maximum width on larger screens */
+    width: 90%;
+    max-width: 1200px;
     margin: auto;
     overflow: hidden;
 }
 
 header {
-    background: #f4f4f4;
-    padding: 10px 0; /* Reduced padding for smaller screens */
+    background: #333;
+    padding: 10px 0;
+    height: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    flex-wrap: wrap;
+    top: o;
+    position: fixed;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.menu__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
 }
 
+.logo{
+    color: #fff;
+    font-size: 30px;
+}
+
+.logo span{
+    color: #e8491d;
+}
+
+
 header .container {
-    display: flex;
+    display: block;
     justify-content: space-between;
     align-items: center;
 }
 
-header .logo h1 {
-    margin: 0;
-    color: #e8491d;
-    font-size: 1.5em; /* Responsive font size */
+header nav {
+    width: 100%;
+    order: 3;
+    margin-top: 10px;
 }
 
 header nav ul {
     list-style: none;
-    margin: 0;
+    margin: 10px 0 0;
     padding: 0;
     display: flex;
-    flex-wrap: wrap; /* Allows navigation to wrap on smaller screens */
-    justify-content: center; /* Center navigation on smaller screens */
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 header nav li {
-    margin: 5px 10px; /* Reduced margins for smaller screens */
+    position: relative;
+    padding: 10px 15px;
 }
 
 header nav a {
-    color: #333;
+    color: #fff;
     text-decoration: none;
-    padding: 8px 12px; /* Add padding for touch targets */
+    padding: 8px 10px;
+    font-size: 18px;
+    display: block;
+    transition: color 0.3s ease;
 }
 
 header nav a:hover {
     color: #e8491d;
 }
 
-.login-container {
-    margin-bottom: 10px; /* Reduced margin for smaller screens */
-    text-align: right;
+.dropdown__menu{
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 10;
 }
 
-.login-button {
-    background-color: #e8491d;
+.dropdown:hover .dropdown__menu {
+display: block;
+}
+
+.dropdown__menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown__menu ul li a {
+    color: #fff;
+    padding: 10px 20px;
+    display: block;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown__menu ul li a:hover {
+    background-color: #555;
+    color: #e8491d;
+}
+
+.fas {
+    float: right;
+    margin-left: 5px;
+    padding-top: 2px;
+}
+
+.media-item.card {
+    /* ... your existing card styles ... */
+    text-align: left; /* Align text to the left within the card */
+    display: flex; /* Use flexbox to arrange image and text */
+    flex-direction: column; /* Stack image and text vertically */
+    width: 300px; /* Example fixed width */
+    height: 400px; /* Example fixed height */
+}
+
+.hero {
     color: white;
-    padding: 8px 15px; /* Reduced padding for smaller screens */
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+    text-align: center;
+    padding: 100px 0;
+    background-color: #e8491d; /* Appealing color for hero */
+    margin-top: 80px;
 }
 
-.login-button:hover {
-    background-color: #d13d18;
+.hero h1 {
+    font-size: 2.5em; /* Adjusted font size */
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 1.1em; /* Adjusted font size */
+    line-height: 1.8;
 }
 
 .content-section {
-    padding: 30px 0; /* Reduced padding for smaller screens */
+    padding: 30px 0;
     text-align: center;
     display: none;
+    min-height: 300px; /* Ensure sections have some height */
+}
+
+.content-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.content-section p {
+    font-size: 1em;
+    line-height: 1.7;
+    margin-bottom: 15px;
+    padding: 0 10%; /* Add some side padding to content */
 }
 
 .media-container {
     display: flex;
-    justify-content: center; /* Center media items */
     flex-wrap: wrap;
+    justify-content: center; /* Center items */
+    gap: 20px;
+    padding: 20px;
 }
 
 .media-item {
-    margin: 10px; /* Reduced margin for smaller screens */
-    max-width: 90%; /* Responsive max width */
+    flex-basis: calc(33% - 40px); /* Roughly 3 items per row */
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    text-align: center; /* Center content within media items */
 }
 
-.media-item img, .media-item video, .media-item iframe {
+.media-item img,
+.media-item video,
+.media-item iframe {
     max-width: 100%;
     height: auto;
-    border-radius: 8px;
+    display: block;
+    margin-bottom: 10px; /* Add space below media */
 }
 
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    display: none;
-    justify-content: center;
+.media-item.empty-card {
+    /* Style for empty cards if needed */
+    background-color: #f9f9f9;
+    display: flex;
     align-items: center;
-    z-index: 1000;
+    justify-content: center;
+    min-height: 150px; /* Give empty cards some height */
+    color: #777;
 }
 
-.login-form {
-    background: white;
+#home {
+    background-color: #f9f5f0; /* Light, warm color */
+    display: flexbox;
+}
+
+#home .media-container {
+    justify-content: flex-start; /* Align media items to the left in home */
+}
+
+#home .media-item {
+    flex-basis: calc(50% - 30px); /* Two items per row on larger screens */
+}
+
+#music {
+    background-color: #e6f7ff; /* Light blue */
+}
+
+#art {
+    background-color: #f0f8ff; /* Alice blue */
+}
+
+#lifestyle {
+    background-color: #fff0f5; /* Lavender blush */
+}
+
+#eventPlanning {
+background-image: url(planeve.avif);/* Beige */
+background-size: cover;
+background-repeat: no-repeat;
+color: aquamarine;
+}
+
+#voiceOver {
+    background-color: #ffe4e1;
+}
+
+#about,
+#contact {
+    padding: 60px 0;
+    background-image: url(nai.jpg);/* Beige */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: yellow;
+    text-align: center;
+}
+
+#contact form {
+    background-color: grey;
+    padding: 30px;border-radius: 8px;
+}
+
+#contact p {
+    padding: 0;
+}
+
+#contact form {
+    max-width: 600px;
+    margin: 20px auto;
     padding: 20px;
-    border-radius: 8px;
-    width: 90%; /* Responsive width */
-    max-width: 300px; /* Maximum width */
+    border: 1px solid blanchedalmond;
+    border-radius: 5px;
+    background-color: brown;
 }
 
-.login-form input, .login-form button {
+#contact label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#contact input[type="text"],
+#contact input[type="email"],
+#contact textarea {
     width: 100%;
     padding: 10px;
-    margin: 8px 0;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
     box-sizing: border-box;
+    font-family: inherit;
+    font-size: inherit;
 }
 
-.login-form button {
+#contact button[type="submit"] {
     background-color: #e8491d;
     color: white;
+    padding: 10px 20px;
     border: none;
     cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
 }
 
-.signup-link, .forgot-password-link {
+#contact button[type="submit"]:hover {
+    background-color: #d13e17;
+}
+
+#contact .social-links {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     margin-top: 10px;
-    text-align: center;
 }
 
-.hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('placeholder-image.jpg') no-repeat center center/cover;
-    color: white;
-    text-align: center;
-    padding: 50px 0; /* Reduced padding for smaller screens */
+#contact .social-links a {
+    margin-right: 15px;
+    display: inline-block;
 }
 
-.hero h1 {
-    font-size: 2em; /* Responsive font size */
-    margin-bottom: 10px; /* Reduced margin for smaller screens */
-}
-
-.hero p {
-    font-size: 1em; /* Responsive font size */
+#contact .social-links img {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
 }
 
 footer {
     background: #333;
-    color: white;
+    color: #fff;
     text-align: center;
-    padding: 10px 0; /* Reduced padding for smaller screens */
+    padding: 20px 0;
+    font-size: 0.9em;
 }
 
-.close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    color: #333;
-    font-size: 1.5em;
-    cursor: pointer;
-}
+/* --- Media Queries for Responsiveness --- */
 
-#home {
-    display: block;
-}
-
-/* Media Queries for Responsive Design */
+/* Small screens (phones) */
 @media (max-width: 768px) {
-    header .logo h1 {
-        font-size: 1.2em;
+    .logo {
+        font-size: 24px;
+    }
+
+    header {
+        padding: 10px 2%;
+    }
+
+    header .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+
+    .menu__bar {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    header nav {
+        order: 2;
+        width: 100%;
     }
 
     header nav ul {
-        flex-direction: column; /* Stack navigation items vertically */
-        align-items: center;
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     header nav li {
-        margin: 5px 0;
+        padding: 10px 0;
+        width: 100%;
+        text-align: left;
+    }
+
+    header nav a {
+        padding: 8px 0;
+        font-size: 1.1em;
+    }
+
+    .dropdown__menu {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+    }
+
+    .dropdown__menu ul li a {
+        padding-left: 20px;
+    }
+
+    .hero {
+        padding: 60px 20px;
     }
 
     .hero h1 {
-        font-size: 1.8em;
+        font-size: 2em;
     }
 
     .hero p {
-        font-size: 0.9em;
+        font-size: 1em;
+    }
+
+    .content-section {
+        padding: 20px;
+    }
+
+    .content-section h2 {
+        font-size: 1.7em;
+    }
+
+    .content-section p {
+        font-size: 0.95em;
+        padding: 0;
+    }
+
+    .media-container {
+        padding: 10px;
+    }
+
+    .media-item {
+        flex-basis: 100%; /* Single column on small screens */
+        margin-bottom: 15px;
     }
 }
-</style>
+/* ... your existing CSS ... */
+
+#home {
+    background-color: #f9f5f0; /* Light, warm color */
+    display: flex; /* Ensure it's visible */
+    background-image: url(AWAR);/* Beige */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    color: goldenrod;
+}
+
+.homepage-layout {
+    display: flex;
+    flex-direction: column; /* Stack slideshow and other content */
+    min-height: calc(100vh - [header-height]px - [footer-height]px - [hero-height]px); /* Ensure it fills the remaining viewport */
+}
+
+.home-other-content {
+    padding: 20px; /* Add some padding around the content */
+    flex-grow: 1; /* Take up the remaining vertical space */
+    text-align: center; /* Center the text within this section */
+}
+
+.home-other-content h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.home-other-content p {
+    font-size: 1em;
+    line-height: 1.7;
+    margin-bottom: 15px;
+    padding: 0 10%; /* Add some side padding to the paragraph */
+}
+
+.home-other-content .media-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center media items */
+    gap: 20px;
+    padding: 20px;
+}
+
+.home-other-content .media-item {
+    flex-basis: calc(33% - 40px); /* Adjust as needed for layout */
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    text-align: center;
+}
+
+.home-other-content .media-item img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* --- You might need to adjust media queries for responsiveness of .home-other-content --- */
+@media (max-width: 768px) {
+    .home-other-content .media-item {
+        flex-basis: 100%;
+    }
+    .home-other-content p {
+        padding: 0;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+    .home-other-content .media-item {
+        flex-basis: calc(50% - 30px);
+    }
+}
